@@ -1,12 +1,16 @@
 import lab5.EmailService;
 import lab5.User;
 import lab5.UserListProcessor;
+import lab5.task2.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
+        //Task 1
+        System.out.println("---------------Task1---------------");
         ArrayList<String> usernames = new ArrayList<>();
         usernames.add("amina_s");
         usernames.add("artem_il");
@@ -36,5 +40,32 @@ public class Main {
 
         System.out.println("\nUpdated user list:");
         userListProcessor.processUserList();
+
+        //Task 2
+        System.out.println("---------------Task2---------------");
+        System.out.println("---------------Order---------------");
+        List<String> items = List.of("Moisturizer", "SPF", "Toner");
+        OrderProcessor orderProcessor = new OrderProcessor(items);
+        double totalPrice = orderProcessor.calculateTotalPrice();
+        Order order = new Order("Amina", items, totalPrice);
+        order.processOrder();
+
+        System.out.println("--------------Person---------------");
+        Person person = new Person("Amina", 19, "Female");
+        System.out.println("Name: " + person.getName());
+        System.out.println("Age: " + person.getAge());
+        System.out.println("Gender: " + person.getGender());
+
+        Relationships relationships = new Relationships();
+        relationships.addFriend("Sergiy");
+        relationships.addFriend("Polina");
+        relationships.addEnemy("Sasha");
+        Tasks tasks = new Tasks();
+        tasks.addTask("Complete homework");
+        tasks.addTask("Go shopping");
+
+        System.out.println("Friends: " + relationships.getFriends());
+        System.out.println("Enemies: " + relationships.getEnemies());
+        System.out.println("Tasks: " + tasks.getTasks());
     }
 }
