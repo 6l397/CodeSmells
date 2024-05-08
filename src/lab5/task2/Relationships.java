@@ -35,4 +35,12 @@ public class Relationships {
     public List<String> getEnemies() {
         return enemies;
     }
+
+    @Override
+    public String toString() {
+        return "Relationships{" +
+                "friends=" + friends +
+                ", enemies=" + enemies +
+                '}';
+    }
 }

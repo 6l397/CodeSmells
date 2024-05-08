@@ -1,39 +1,37 @@
 package lab5;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class UserListProcessor {
-    private ArrayList<String> usernames;
+    private List<User> users;
 
-    public UserListProcessor(ArrayList<String> usernames) {
-        this.usernames = usernames;
+    public UserListProcessor(List<User> users) {
+        this.users = users;
     }
 
     public void processUserList() {
-        for (String username : usernames) {
-            processUser(username);
+        for (User user : users) {
+            processUser(user);
         }
     }
 
-    private void processUser(String username) {
-        System.out.println("Processing user: " + username);
-        if (username.contains("admin")) {
+    private void processUser(User user) {
+        System.out.println("Processing user: " + user.getUsername());
+        if (user.isAdmin()) {
             System.out.println("Admin user detected!");
         }
     }
 
-    public int countAdminUsers() {
-        AdminCounter counter = new AdminCounter(usernames);
-        return counter.countAdmins();
+    public long countAdminUsers() {
+        return users.stream().filter(User::isAdmin).count();
     }
 
     public void addUser(User user) {
-        String username = user.getUsername();
-        if (!usernames.contains(username)) {
-            usernames.add(username);
-            System.out.println("User added: " + username);
+        if (!users.contains(user)) {
+            users.add(user);
+            System.out.println("User added: " + user);
         } else {
-            System.out.println("User already exists: " + username);
+            System.out.println("User already exists: " + user);
         }
     }
 

@@ -4,14 +4,11 @@ import java.util.List;
 
 public class Order {
     private String customerName;
-    private List<String> items;
+    private List<Item> items;
 
-    private double totalPrice;
-
-    public Order(String customerName, List<String> items, double totalPrice) {
+    public Order(String customerName, List<Item> items) {
         this.customerName = customerName;
         this.items = items;
-        this.totalPrice = totalPrice;
     }
 
     public void processOrder() {

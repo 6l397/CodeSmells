@@ -3,9 +3,9 @@ package lab5.task2;
 import java.util.List;
 
 public class OrderProcessor {
-    private List<String> items;
+    private List<Item> items;
 
-    public OrderProcessor(List<String> items) {
+    public OrderProcessor(List<Item> items) {
         this.items = items;
     }
 
@@ -14,8 +14,8 @@ public class OrderProcessor {
     }
 
     private void displayOrderDetails() {
-        for (String item : items) {
-            System.out.println("Processing item: " + item);
+        for (Item item : items) {
+            System.out.println("Processing item: " + item.getItemName());
         }
         double totalPrice = calculateTotalPrice();
         System.out.println("Total price: " + totalPrice);
@@ -23,21 +23,18 @@ public class OrderProcessor {
 
     public double calculateTotalPrice() {
             double totalPrice = 0.0;
-            for (String item : items) {
+            for (Item item : items) {
                 totalPrice += calculateItemPrice(item);
             }
         return totalPrice;
     }
 
-    private double calculateItemPrice(String item) {
-        if (item.equalsIgnoreCase("Moisturizer")) {
-            return 10.0;
-        } else if (item.equalsIgnoreCase("SPF")) {
-            return 15.0;
-        } else if (item.equalsIgnoreCase("Toner")) {
-            return 20.0;
-        } else {
-            return 0.0;
-        }
+    private double calculateItemPrice(Item item) {
+        return switch (item.getItemName()) {
+            case "Moisturizer" -> 10.0;
+            case "SPF" -> 15.0;
+            case "Toner" -> 20.0;
+            default -> 0.0;
+        };
     }
 }

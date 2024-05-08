@@ -21,4 +21,11 @@ public class Tasks {
     public List<String> getTasks() {
         return tasks;
     }
+
+    @Override
+    public String toString() {
+        return "Tasks{" +
+                "tasks=" + tasks +
+                '}';
+    }
 }
