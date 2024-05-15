@@ -1,22 +1,28 @@
 package lab6.part5DealingWithGeneralization.task10FormTemplateMethod;
 
-public class CakeRecipe implements CookingRecipe {
+public class CakeRecipe extends CookingRecipe {
     @Override
     public void prepareRecipe() {
-        addIngredients();
-        bake();
-        serve();
+        heatOwen();
+        super.prepareRecipe();
     }
 
-    private void addIngredients() {
+    private void heatOwen() {
+        System.out.println("Heating owen...");
+    }
+
+    @Override
+    public void addIngredients() {
         System.out.println("Adding flour, sugar, eggs, etc.");
     }
 
-    private void bake() {
+    @Override
+    public void cook() {
         System.out.println("Baking the cake in the oven");
     }
 
-    private void serve() {
+    @Override
+    public void serve() {
         System.out.println("Serving");
     }
 }

@@ -6,7 +6,7 @@ public class Car {
     private int year;
     private String color;
 
-    public Car(String brand, String model, int year, String color) {
+    private Car(String brand, String model, int year, String color) {
         this.brand = brand;
         this.model = model;
         this.year = year;
@@ -14,12 +14,16 @@ public class Car {
     }
 
     private void registerCar() {
-
         System.out.println("Car registered successfully!");
     }
 
     public void create() {
-
         registerCar();
+    }
+
+    public static Car createCar(String brand, String model, int year, String color) {
+        Car car = new Car(brand, model, year, color);
+        car.registerCar();
+        return car;
     }
 }
